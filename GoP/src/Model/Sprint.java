@@ -5,7 +5,6 @@ import Model.AbstractClass.Task;
 import java.util.ArrayList;
 
 public class Sprint extends Task{
-    String name;
     ArrayList<String> Backlog;
     ArrayList<UserStory> UserStories;
     boolean IsDone = false;

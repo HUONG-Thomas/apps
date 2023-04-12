@@ -1,7 +1,7 @@
-package Controller.CreateSprint;
+package Controller.Observer.CreateSprint;
 
-import View.CreateSprint;
 import View.MainView;
+import View.UserStoryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +21,8 @@ public class CreateSprintObserver implements Observer, ActionListener {
     public void actionPerformed(ActionEvent e) {
         String sprintName = textField.getText();
         MainView.Pop(sprintName, "Sprint name");
+
+        MainView.getInstance().ChangeView(new UserStoryView());
     }
 
     @Override

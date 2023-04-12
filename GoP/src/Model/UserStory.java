@@ -5,7 +5,6 @@ import Model.AbstractClass.Task;
 import java.util.*;
 
 public class UserStory extends Task {
-    String name;
     ArrayList<User> userList;
 
     public UserStory(String name)
@@ -39,5 +38,11 @@ public class UserStory extends Task {
 
     public void setUserList(ArrayList<User> userList) {
         this.userList = userList;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.getName();
     }
 }

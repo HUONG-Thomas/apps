@@ -1,12 +1,12 @@
 package View;
 
-import Controller.CreateSprint.CreateSprintObserver;
+import Controller.Observer.CreateSprint.CreateSprintObserver;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CreateSprint extends JPanel {
-    public CreateSprint()
+public class CreateSprintView extends JPanel {
+    public CreateSprintView()
     {
         setSize(1200, 800);
 

@@ -1,6 +1,6 @@
-package Controller.MainMenu;
+package Controller.Observer.MainMenu;
 
-import View.CreateSprint;
+import View.CreateSprintView;
 import View.MainView;
 
 import java.awt.event.ActionEvent;
@@ -17,7 +17,6 @@ public class MainMenuObserver implements Observer, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        CreateSprint newView = new CreateSprint();
-        MainView.getInstance().ChangeView(newView);
+        MainView.getInstance().ChangeView(new CreateSprintView());
     }
 }

@@ -1,6 +1,6 @@
 package View;
 
-import Controller.MainMenu.MainMenuObserver;
+import Controller.Observer.MainMenu.MainMenuObserver;
 
 import javax.swing.*;
 import java.awt.*;
