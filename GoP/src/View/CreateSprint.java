@@ -1,5 +1,7 @@
 package View;
 
+import Controller.CreateSprint.CreateSprintObserver;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -44,7 +46,8 @@ public class CreateSprint extends JPanel {
         gbc.insets = new Insets(0, 0, 20, 0);
         panel.add(Box.createVerticalStrut(40), gbc);
 
-        // Add the button to the panel
+        // Add the button to the panel with its observer
+        button.addActionListener(new CreateSprintObserver(textfield));
         gbc.insets = new Insets(0, 0, 10, 0);
         panel.add(button, gbc);
 

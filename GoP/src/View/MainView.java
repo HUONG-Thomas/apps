@@ -20,6 +20,11 @@ public class MainView extends JFrame {
         ChangeView(menu);
     }
 
+    public static void Pop(String text, String title)
+    {
+        JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void ChangeView(JPanel newView)
     {
         this.display = newView;

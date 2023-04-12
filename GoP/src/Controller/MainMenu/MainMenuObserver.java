@@ -1,7 +1,6 @@
-package Controller;
+package Controller.MainMenu;
 
 import View.CreateSprint;
-import View.MainMenu;
 import View.MainView;
 
 import java.awt.event.ActionEvent;
@@ -10,7 +9,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class MainMenuObserver implements Observer, ActionListener {
-    MainMenu mainMenu;
 
     @Override
     public void update(Observable o, Object arg) {

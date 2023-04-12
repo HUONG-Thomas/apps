@@ -23,7 +23,7 @@ public class Main {
         game.AddLogToBackLog("Day 1 : init project");
         game.AddLogToBackLog("Day 2 : nice, is going smooth");
 
-        // Let's get the list of all the user stories of the cwerurrent sprint
+        // Let's get the list of all the user stories of the current sprint
         ArrayList<UserStory> userStories = game.GetUserStories();
         UserStory lastOne = userStories.get(userStories.size() - 1);
 

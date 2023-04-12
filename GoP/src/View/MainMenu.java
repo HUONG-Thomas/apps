@@ -1,6 +1,6 @@
 package View;
 
-import Controller.MainMenuObserver;
+import Controller.MainMenu.MainMenuObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,8 +18,7 @@ public class MainMenu extends JPanel {
         // Create the button and set its properties and the observer
         JButton button = new JButton("Start Project");
         button.setFont(new Font("Arial", Font.PLAIN, 16));
-        MainMenuObserver observer = new MainMenuObserver();
-        button.addActionListener(observer);
+        button.addActionListener(new MainMenuObserver());
 
         // Create a panel to hold the label and button
         JPanel panel = new JPanel(new GridBagLayout());
