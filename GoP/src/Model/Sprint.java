@@ -17,9 +17,9 @@ public class Sprint extends Task{
         UserStories = new ArrayList<>();
     }
 
-    public void AddUserStory(String name)
+    public void AddUserStory(UserStory userStory)
     {
-        this.UserStories.add(new UserStory(name));
+        this.UserStories.add(userStory);
     }
 
     public void AddLogToBacklog(String log)

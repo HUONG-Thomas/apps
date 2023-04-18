@@ -1,3 +1,4 @@
+import Controller.GameController;
 import View.MainView;
 
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class Main {
         }
         */
 
-        MainView mainView = MainView.getInstance();
+        MainView.getInstance();
+        GameController gameController = GameController.GetInstance();
+        gameController.GameStart();
     }
 }

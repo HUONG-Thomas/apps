@@ -1,5 +1,6 @@
 package Controller.Observer.CreateSprint;
 
+import Controller.GameController;
 import View.MainView;
 import View.UserStoryView;
 
@@ -20,9 +21,12 @@ public class CreateSprintObserver implements Observer, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String sprintName = textField.getText();
-        MainView.Pop(sprintName, "Sprint name");
 
-        MainView.getInstance().ChangeView(new UserStoryView());
+        try {
+            GameController.GetInstance().CreateSprint(sprintName);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override

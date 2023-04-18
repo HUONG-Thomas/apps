@@ -1,24 +1,39 @@
 package View;
 
+import Controller.Observer.UserStory.AddUserStoryObserver;
 import Model.Enumeration.Role;
 import Model.Enumeration.Sex;
 import Model.User;
+import Model.UserStory;
 import View.Component.UserStoryComponent;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class UserStoryView extends JPanel {
 
-    public UserStoryView()
-    {
-        UserStoryComponent tester = new UserStoryComponent("test1");
-        tester.addUser(new User("Nicolas", Sex.Female, Role.ProductOwner));
-        tester.addUser(new User("Thomas", Sex.Male, Role.ScrumMaster));
-        tester.addUser(new User("Marcelin", Sex.Male, Role.Developer));
+    private JPanel userStoryListPanel;
 
-        this.add(tester);
-        tester.setVisible(true);
+    public UserStoryView(String name) {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        JButton addUserStory = new JButton();
+        JLabel sprintName = new JLabel(name);
+        sprintName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(sprintName);
+
+        JButton addUserStory = new JButton("Add a user story");
+        addUserStory.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addUserStory.addActionListener(new AddUserStoryObserver());
+        add(addUserStory);
+
+        userStoryListPanel = new JPanel();
+        userStoryListPanel.setLayout(new BoxLayout(userStoryListPanel, BoxLayout.Y_AXIS));
+        add(userStoryListPanel);
+    }
+
+    public void addUserStoryComponent(UserStoryComponent userStoryComponent) {
+        userStoryListPanel.add(userStoryComponent);
+        revalidate();
+        repaint();
     }
 }

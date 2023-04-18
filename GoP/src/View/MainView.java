@@ -38,6 +38,14 @@ public class MainView extends JFrame {
         this.repaint(); // repaint JFrame
     }
 
+    public void AddComponent(JPanel component)
+    {
+        this.display.add(component);
+        component.setVisible(true);
+        this.revalidate();
+        this.repaint();
+    }
+
     public static MainView getInstance() {
         if (instance == null) {
             instance = new MainView();

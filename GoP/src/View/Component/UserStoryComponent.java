@@ -13,27 +13,30 @@ public class UserStoryComponent extends JPanel {
     private JLabel label;
     private JList<User> list;
 
-    public UserStoryComponent(String name) {
+    public UserStoryComponent(UserStory userStory, ArrayList<User> userList) {
         // Create the label
-        userStory = new UserStory(name);
+        this.userStory = userStory;
         users = new ArrayList<>();
 
         label = new JLabel(userStory.toString());
-        this.add(label);
+        add(label);
+
+        JScrollPane scrollPane = new JScrollPane();
+        add(scrollPane);
+
+        list = new JList<>();
+        list.setCellRenderer(new UserStoryListRenderer());
+        scrollPane.setViewportView(list);
+
+        for (User user : userList) {
+            addUser(user);
+        }
     }
 
-    public void addUser(User user)
-    {
+    public void addUser(User user) {
         users.add(user);
         User[] userArray = users.toArray(new User[users.size()]);
-        list = new JList<>(userArray);
-        list.setCellRenderer(new UserStoryListRenderer());
-
-        this.removeAll();
-        this.add(label);
-        this.add(list);
-        this.revalidate();
-        this.repaint();
+        list.setListData(userArray);
     }
 
     // Get the selected value from the list
@@ -41,4 +44,3 @@ public class UserStoryComponent extends JPanel {
         return list.getSelectedValue();
     }
 }
-

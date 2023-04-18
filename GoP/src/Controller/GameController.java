@@ -2,15 +2,21 @@ package Controller;
 
 import Model.GameModel;
 import Model.Sprint;
+import Model.User;
 import Model.UserStory;
+import View.Component.UserStoryComponent;
+import View.MainView;
+import View.UserStoryView;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class GameController {
-    GameModel gameModel;
-    Sprint currentSprint;
+    private static GameController instance;
+    private static GameModel gameModel;
+    private static Sprint currentSprint;
 
-    public GameController() { }
+    private GameController() { }
 
     public void GameStart()
     {
@@ -18,7 +24,17 @@ public class GameController {
         gameModel = new GameModel();
     }
 
-    // TODO add user to the list of user of UserStory
+    public static GameController GetInstance() {
+        if (instance == null) {
+            instance = new GameController();
+        }
+        return instance;
+    }
+
+    public static void ChangeView(JPanel newView)
+    {
+        MainView.getInstance().ChangeView(newView);
+    }
 
     public void CreateSprint(String name) throws Exception {
         if(currentSprint != null)
@@ -28,37 +44,45 @@ public class GameController {
         else
         {
             currentSprint = gameModel.addSprint(name);
+            ChangeView(new UserStoryView(name));
         }
     }
 
-    public void AddUserStories(String name)
+    public void AddUserStory(String name, ArrayList<User> userList)
     {
-        currentSprint.AddUserStory(name);
+        UserStory userStory = new UserStory(name);
+        currentSprint.AddUserStory(userStory);
+        MainView.getInstance().AddComponent(new UserStoryComponent(userStory, userList));
     }
 
-    public void AddLogToBackLog(String log)
+    public void AdUserToUserStory(User user)
+    {
+
+    }
+
+    public static void AddLogToBackLog(String log)
     {
         currentSprint.AddLogToBacklog(log);
     }
 
-    public void MarkUserStoryAsDone(UserStory userStory)
+    public static void MarkUserStoryAsDone(UserStory userStory)
     {
         userStory.IsDone();
     }
 
-    public ArrayList<UserStory> GetUserStories()
-    {
-        return currentSprint.getUserStories();
-    }
-
-    public void MarkSprintAsDone()
+    public static void MarkSprintAsDone()
     {
         currentSprint.IsDone();
         currentSprint = null;
     }
 
-    public ArrayList<Sprint> GetSprints()
+    public static ArrayList<Sprint> GetSprints()
     {
         return gameModel.getSprints();
+    }
+
+    public static ArrayList<UserStory> GetUserStories()
+    {
+        return currentSprint.getUserStories();
     }
 }

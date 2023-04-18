@@ -1,5 +1,6 @@
 package Controller.Observer.MainMenu;
 
+import Controller.GameController;
 import View.CreateSprintView;
 import View.MainView;
 
@@ -11,12 +12,14 @@ import java.util.Observer;
 public class MainMenuObserver implements Observer, ActionListener {
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg)
+    {
         System.out.println("view has changed");
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        MainView.getInstance().ChangeView(new CreateSprintView());
+    public void actionPerformed(ActionEvent e)
+    {
+        GameController.ChangeView(new CreateSprintView());
     }
 }
